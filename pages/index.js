@@ -1,11 +1,21 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
+import backend from "../../backend.js"
 import styles from '@/styles/Home.module.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+export async function getServerSideProps({ req, res }) {
+  return {
+    props: {
+      serverSide: require("process").cwd(),
+      backend: backend
+    }
+  }
+}
+
+export default function Home(props) {
   return (
     <>
       <Head>
@@ -18,7 +28,7 @@ export default function Home() {
         <div className={styles.description}>
           <p>
             Get started by editing&nbsp;
-            <code className={styles.code}>pages/index.js</code>
+            <code className={styles.code}>{JSON.stringify(props,null,2)}</code>
           </p>
           <div>
             <a
