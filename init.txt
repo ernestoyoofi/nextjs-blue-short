@@ -1,0 +1,9 @@
+rm -r .next
+rm -r node_modules
+rm package-lock.json
+git init
+git add .
+git commit -m "First Commites"
+git branch -M main
+git remote add origin https://github.com/ernestoyoofi/nextjs-blue-short.git
+git push -u origin main
